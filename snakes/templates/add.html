@@ -1,0 +1,29 @@
+{% extends 'snake_database/templates/app.html' %}
+
+{% block content %}
+    <h1>Add Snake</h1>
+    <hr>
+    <form id="add-snake" method="post">
+        {% csrf_token %}
+<!--        {{ form.as_p }}-->
+       <div class="form-group">
+           <label for="id_common_name">Common Name:</label>
+           <input type="text" class="form-control" name="common_name" maxlength="50" required>
+       </div>
+       <div class="form-group">
+           <label for="id_species">Species:</label>
+           <input type="text" class="form-control" name="species" maxlength="100" required>
+       </div>
+       <div class="form-group">
+           <label for="id_location">Location:</label>
+           <input type="text" class="form-control" name="location" maxlength="50" required>
+       </div>
+        <div class="form-group">
+           <label for="id_description">Description:</label>
+           <input type="text" class="form-control" name="description" maxlength="300" required>
+       </div>
+       <div class="form-group">
+           <button type="submit" class="btn btn-info">Submit</button>
+       </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'snake_database/templates/app.html' %}
+
+
+
+{% block content %}
+    <h1>Snake Details</h1>
+    
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{ snake.common_name }} </div>
+      <div class="panel-body">{{ snake.common_name }} is a species of {{ snake.species }} endemic to {{ snake.location }}. {{ snake.description }}</div>
+    </div>
+{% endblock %}

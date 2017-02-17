@@ -1,0 +1,45 @@
+{% extends 'snake_database/templates/app.html' %}
+
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/snakes.css' %}">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+{% endblock %}
+
+{% block content %}
+    <h1>Snake Database</h1>
+    
+
+
+    <table id="snakes_table" class="table table-striped table-bordered" cellspacing="0" width="150%">
+        <tr>
+            <th>Common Name</th>
+            <th>Species</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th style="width: 200px">Actions</th>
+        </tr>
+        {% for snake in snakes %}
+        <tr>
+            <td>{{ snake.common_name }} </td>
+            <td>{{ snake.species }}</td>
+            <td>{{ snake.location }}</td>
+            <td>{{ snake.description }}</td>
+            <td>
+                <a href="/snake/{{snake.id}}" class="btn btn-info" role="button">View</a>
+                <a href="/snakes/edit/{{snake.id}}" class="btn btn-info" role="button">Edit</a>
+                <a href="/delete/{{snake.id}}" class="btn btn-info" role="button">Remove</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    $(function(){
+        $("#snakes_table").dataTable();
+    })
+    </script>
+{% endblock %}
